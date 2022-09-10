@@ -1,0 +1,18 @@
+@import '../../node_modules/swiper/swiper-bundle.css';
+@import './normolaze.css';
+
+.container {
+    max-width: 1330px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.stopscroll {
+  overflow: hidden;
+}
+
+@import './header.scss';
+@import "./modal";
+@import "./main";
+@import "./products";
+
+@import "modal-details";

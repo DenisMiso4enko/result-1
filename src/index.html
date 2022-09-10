@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1</title>
+    <link rel="stylesheet" href="./scss/style.scss">
+    <script src="js/calcPrice.js" type="module"></script>
+    <script src="./js/renderProducts.js" type="module"></script>
+    <script src="./js/app.js" type="module"></script>
+</head>
+<body>
+    <div class="container">
+    <header class="header__inner">
+        <div class="header">
+            <div class="header__logo">Wildberries</div>
+            <input id="search-input" class="header__input" type="text" placeholder="Поиск..">
+            <button class="btn btn-cart">
+                Корзина
+                <span class="counter">0</span>
+            </button>
+        </div>
+    </header>
+
+
+        <div id="modal" data-modal class="fade-block hidden">
+            <div class="shopping-cart active">
+                <h3 class="shopping-cart__title">Корзина</h3>
+                <div class="shopping-cart__container">
+<!--                    <h3 id="empty">Ваша корзина пустая</h3>-->
+                    <template id="product-template">
+                        <div class="shopping-cart__item" data-id="{{id}}">
+                            <div class="shopping-cart__content">
+                                <div class="shopping-cart__photo">
+<!--                                    <img src="{{imgSrc}}" alt="product">-->
+                                </div>
+                                <div class="shopping-cart__name">{{title}}</div>
+
+                                <div class="items items--small counter-wrapper">
+                                    <div class="items__control" data-action="minus">-</div>
+                                    <div class="items__current" data-counter="">1</div>
+                                    <div class="items__control" data-action="plus">+</div>
+                                </div>
+
+                                <div class="shopping-cart__price">{{price}}</div>
+                            </div>
+                            <div class="shopping-cart__btns">
+                                <button data-action="remove" class="btn-remove">Удалить</button>
+                            </div>
+                        </div>
+
+                    </template>
+
+
+                </div>
+                <div class="shopping-cart__bottom">
+                    <button class="btn-close">Close</button>
+                    <span class="total">0</span>
+                </div>
+
+            </div>
+        </div>
+
+        <main class="main">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide"><img src="https://images.wbstatic.net/bners1/big_cenopad_0709.jpg" alt="slide"></div>
+                  <div class="swiper-slide"><img src="https://images.wbstatic.net/bners1/big_school_0709455.jpg" alt="slide"></div>
+                  <div class="swiper-slide"><img src="https://images.wbstatic.net/bners1/big_samsung_new_8494955.jpg" alt="slide"></div>
+                  
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </main>
+
+        <section class="products">
+            <h3 class="products__title">Хиты продаж</h3>
+            <div class="products-wrapper">
+
+<!--                <div class="products__cart">-->
+<!--                    <div class="products__cart-img">-->
+<!--                        <img src="https://basket-02.wb.ru/vol146/part14607/14607167/images/big/1.jpg" alt="product">-->
+<!--                        <div class="products__cart-review">-->
+<!--                            <button class="btn-preview">Быстрый просмотр</button>-->
+<!--                            <div class="products__cart-add">-->
+<!--                                <span class="sale"> - 10 %</span>-->
+<!--                                <button class="btn-add">+</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div class="products__cart-info">-->
+<!--                        <div class="price-wrapper">-->
+<!--                            <span class="price">900 p</span>-->
+<!--                            <span class="old-price">1000 p</span>-->
+<!--                        </div>-->
+<!--                        <div class="cart-title">Штаны</div>-->
+<!--                    </div>-->
+<!--                </div> -->
+
+            </div>
+        </section>
+
+        <div class="modal-details hidden">
+
+        </div>
+
+    </div>
+</body>
+</html>
+

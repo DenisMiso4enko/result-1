@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Freedom street Джинсы",
+    "price": 169,
+    "sale": 10,
+    "image": "https://basket-04.wb.ru/vol504/part50465/50465483/images/c516x688/1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "KENSPRIT Джинсы бананы",
+    "price": 143,
+    "sale": 15,
+    "image": "https://basket-01.wb.ru/vol139/part13907/13907720/images/c516x688/1.jpg"
+  },
+  {
+    "id": 3,
+    "title":" Freedom street Джинсы",
+    "price": 160,
+    "sale": 10,
+    "image": "https://basket-04.wb.ru/vol504/part50465/50465483/images/c516x688/1.jpg"
+  },
+  {
+    "id": 4,
+    "title":" Freedom street Джинсы",
+    "price": 147,
+    "sale": 50,
+    "image": "https://basket-02.wb.ru/vol247/part24706/24706131/images/c516x688/1.jpg"
+  }
+]

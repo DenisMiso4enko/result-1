@@ -1,0 +1,61 @@
+.header__inner {
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 11;
+    padding: 0 10px;
+    background: linear-gradient(to right,#cb11ab 0,#481173 100%) no-repeat;
+}
+.header {
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    &__logo {
+        font-size: 30px;
+        text-transform: uppercase;
+        color: white;
+    }
+
+    &__input {
+        width: 90%;
+        padding: 10px;
+        //border: 1px solid red;
+        border-radius: 24px;
+        font-size: 18px;
+        background: rgba(255,255,255,.2);
+        transition: background .3s ease;
+        cursor: pointer;
+        text-align: center;
+        &:focus, &:hover  {
+            background: white;
+        }
+        &::placeholder {
+            color: #999999;
+        }
+    }
+}
+.btn {
+}
+.btn-cart {
+    position: relative;
+    padding: 10px;
+    border-radius: 24px;
+    border: 1px solid red;
+    background: white;
+    &:hover {
+        background: red;
+        color: white;
+    }
+}
+.counter {
+    position: absolute;
+    top: -5px;
+    right: 0px;
+    padding: 3px;
+    background: red;
+    border-radius: 50%;
+}

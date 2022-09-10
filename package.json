@@ -1,0 +1,29 @@
+{
+  "name": "result-1",
+  "version": "1.0.0",
+  "description": "",
+  "source": "src/index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DenisMiso4enko/result-1.git"
+  },
+  "author": "Denis Misochenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DenisMiso4enko/result-1/issues"
+  },
+  "homepage": "https://github.com/DenisMiso4enko/result-1#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.7.0",
+    "parcel": "^2.7.0"
+  },
+  "dependencies": {
+    "lightgallery": "^2.6.0",
+    "swiper": "^8.3.2"
+  }
+}
