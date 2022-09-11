@@ -23,7 +23,6 @@
     &__input {
         width: 90%;
         padding: 10px;
-        //border: 1px solid red;
         border-radius: 24px;
         font-size: 18px;
         background: rgba(255,255,255,.2);
@@ -50,12 +49,16 @@
         background: red;
         color: white;
     }
+    &:hover .counter {
+        background: black;
+        color: white;
+    }
 }
 .counter {
     position: absolute;
     top: -5px;
     right: 0px;
-    padding: 3px;
+    padding: 3px 6px;
     background: red;
     border-radius: 50%;
 }

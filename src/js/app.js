@@ -14,8 +14,6 @@ let swiper = new Swiper('.swiper', {
   });
 
 
-
-
  // open cart
  const openCartBtn = document.querySelector('.btn-cart')
  const shoppingCart = document.querySelector('.shopping-cart')
@@ -62,23 +60,18 @@ let swiper = new Swiper('.swiper', {
  });
 
 
-
-
-
 // Корзина
- const data = getData()
-
- // checkEmptyCart()
-
  const shoppingCartContainer = document.querySelector('.shopping-cart__container')
  const productTemplateElement = document.querySelector('#product-template')
  const itemInCart = document.querySelector('.counter')
  const searchInputElement = document.querySelector('#search-input')
 
+const data = getData()
  function checkItemsInCart () {
      itemInCart.textContent = data.length
  }
  checkItemsInCart()
+checkEmptyCart() // не работает
 
 
  // добавление в корзину
@@ -104,6 +97,7 @@ let swiper = new Swiper('.swiper', {
              render(data)
          }
          calcPrice()
+         checkEmptyCart()
 
      }
  })
@@ -118,16 +112,15 @@ let swiper = new Swiper('.swiper', {
          render(data)
          checkItemsInCart()
          calcPrice()
+         checkEmptyCart()
      }
  })
-
 
  // Поиск
  searchInputElement.addEventListener('input', (e) => {
      let searchVal = e.target.value.toLowerCase()
      let searchProduct = document.querySelectorAll('.cart-title')
      searchProduct.forEach(product => {
-         console.log(product)
          if (!product.textContent.toLowerCase().includes(searchVal)) {
              product.parentElement.parentElement.classList.add('hidden')
          } else {
@@ -136,20 +129,19 @@ let swiper = new Swiper('.swiper', {
      })
  })
 
- //проверка пусткой корзины -----! не работает
- // function checkEmptyCart() {
- //     if (data.length === 0) {
- //         const emptyCartHTML = `
- //         <h3 id="empty">Ваша корзина пустая</h3>
- //        `
- //         shoppingCartContainer.insertAdjacentHTML('afterbegin', emptyCartHTML)
- //     }
- //     if (data.length > 0) {
- //         const emptyListEl = document.querySelector('#empty')
- //         emptyListEl ? emptyListEl.remove() : null
- //     }
- // }
-
+ //проверка пусткой корзины
+ function checkEmptyCart() {
+     if (data.length === 0) {
+         const emptyCartHTML = `
+         <h3 id="empty">Ваша корзина пустая</h3>
+        `
+         shoppingCartContainer.insertAdjacentHTML('afterbegin', emptyCartHTML)
+     }
+     if (data.length > 0) {
+         const emptyListEl = document.querySelector('#empty')
+         emptyListEl ? emptyListEl.remove() : null
+     }
+ }
 
  // счетчик суммы
  function calcPrice() {
@@ -209,14 +201,13 @@ let swiper = new Swiper('.swiper', {
  function handlePageLoad () {
      render(data)
      calcPrice()
+     checkEmptyCart()
  }
  window.addEventListener('beforeunload', handleBeforeUnload)
  document.addEventListener('DOMContentLoaded', handlePageLoad)
 
 
-
  // мадалка с деталями товара (картинка)
-
  const detailsModal = document.querySelector('.modal-details')
 
 
@@ -237,23 +228,3 @@ window.addEventListener('click', e => {
      detailsModal.classList.add('hidden')
  })
 
-const detailsModalContent = detailsModal.querySelector('.modal-details__content')
-console.log(detailsModalContent)
- // detailsModalContent.addEventListener('click', (event) =>  event.stopPropagation())
-
- // openCartBtn.addEventListener('click', () => {
- //     fadeBlock.classList.remove('hidden')
- //     body.classList.toggle('stopscroll')
- //     fade.addEventListener('click', function() {
- //         fade.classList.add('hidden')
- //         body.classList.remove('stopscroll')
- //     })
- // })
- //
- // // закрыть корзину
- // closeBtnCart.addEventListener('click', () => {
- //     fadeBlock.classList.add('hidden')
- //     body.classList.remove('stopscroll')
- // })
- //
- // shoppingCart.addEventListener('click', (event) =>  event.stopPropagation())
