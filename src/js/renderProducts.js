@@ -17,7 +17,6 @@ function renderProducts(productsArray) {
                         <div class="products__cart-review">
                             <button data-action="preview" class="btn-preview">Быстрый просмотр</button>
                             <div class="products__cart-add">
-                                <span class="sale"> - 10 %</span>
                                 <button data-cart class="btn-add">+</button>
                             </div>
                         </div>
@@ -25,8 +24,7 @@ function renderProducts(productsArray) {
 
                     <div class="products__cart-info">
                         <div class="price-wrapper">
-                            <span class="price">${price}</span>
-<!--                            <span class="old-price">1000 p</span>-->
+                            <p class="price">${price} р</p>
                         </div>
                         <div class="cart-title">${title}</div>
                     </div>

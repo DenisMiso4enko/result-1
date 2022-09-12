@@ -1,19 +1,3 @@
-// import Swiper JS
-import Swiper from '../../node_modules/swiper/swiper-bundle';
-
-
-let swiper = new Swiper('.swiper', {
-    pagination: {
-      el: '.swiper-pagination',
-      dynamicBullets: true,
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-  });
-
-
  // open cart
  const openCartBtn = document.querySelector('.btn-cart')
  const shoppingCart = document.querySelector('.shopping-cart')
@@ -36,31 +20,11 @@ let swiper = new Swiper('.swiper', {
      fadeBlock.classList.add('hidden')
      body.classList.remove('stopscroll')
  })
-
  shoppingCart.addEventListener('click', (event) =>  event.stopPropagation())
 
 
-// счетчик
- shoppingCart.addEventListener("click", function (e) {
-     let counter
-     if (e.target.dataset.action === "plus" || e.target.dataset.action === "minus") {
-         const counterWrapper = e.target.closest(".counter-wrapper");
-         counter = counterWrapper.querySelector("[data-counter]");
-     }
-     if (e.target.dataset.action === "plus") {
-         counter.innerText = ++counter.innerText;
-         calcPrice()
-     }
-     if (e.target.dataset.action === "minus") {
-         if (parseInt(counter.innerText) > 1) {
-             counter.innerText = --counter.innerText;
-             calcPrice()
-         }
-     }
- });
 
-
-// Корзина
+// товары в корзине
  const shoppingCartContainer = document.querySelector('.shopping-cart__container')
  const productTemplateElement = document.querySelector('#product-template')
  const itemInCart = document.querySelector('.counter')
@@ -86,7 +50,6 @@ function updateProductsInCart(product) {
  // добавление в корзину
  window.addEventListener('click', (e) => {
      if (e.target.hasAttribute("data-cart")) {
-
          const card = e.target.closest(".products__cart");
          const productInfo = {
              id: card.dataset.id,
@@ -96,32 +59,29 @@ function updateProductsInCart(product) {
              element: card,
              inCart: 1,
          }
+         alert('Ваш товар добавден в корзину')
          updateProductsInCart(productInfo)
          render(data)
-         // data.push(productInfo)
-
-         // const itemInCart = shoppingCartContainer.querySelector(`[data-id="${productInfo.id}"]`);
-
-         // if (itemInCart) {
-         //     const counterElement = itemInCart.querySelector("[data-counter]");
-         //     counterElement.innerText =parseInt(counterElement.innerText)
-         //     calcPrice()
-         // } else {
-         //     render(data)
-         // }
          calcPrice()
          checkEmptyCart()
          checkItemsInCart()
 
      }
  })
+
+function deleteProductFromArray(id) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].id === id) {
+            data.splice(i, 1)
+        }
+    }
+}
  // удаление из корзины
  shoppingCart.addEventListener('click', (e) => {
      if (e.target.dataset.action === 'remove') {
          const parent = e.target.closest('.shopping-cart__item')
          const id = parent.dataset.id
-         const index = data.indexOf(product => product.id === id)
-         data.splice(index, 1)
+         deleteProductFromArray(id)
          parent.remove()
          render(data)
          checkItemsInCart()
@@ -129,6 +89,30 @@ function updateProductsInCart(product) {
          checkEmptyCart()
      }
  })
+
+// счетчик товара
+shoppingCart.addEventListener("click", function (e) {
+    if (e.target.dataset.action === 'plus' || e.target.dataset.action === 'minus') {
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].id === e.target.dataset.id) {
+                if (e.target.dataset.action === 'plus') {
+                    data[i].inCart += 1
+                }
+                else if (e.target.dataset.action === 'minus') {
+                    data[i].inCart -= 1
+                }
+            }
+            if (data[i].inCart <= 0) {
+                data.splice(i, 1);
+            }
+        }
+        render(data)
+        checkEmptyCart()
+        checkItemsInCart()
+        calcPrice()
+    }
+});
+
 
  // Поиск
  searchInputElement.addEventListener('input', (e) => {
@@ -191,13 +175,11 @@ function updateProductsInCart(product) {
  // рендер шаблона
  function render (data) {
      let html = ''
-
      data.forEach((item) => {
          const template = buildToDoTemplate(item)
          html = html + template
      })
      shoppingCartContainer.innerHTML = html
-
  }
 
  // массив данных
@@ -221,11 +203,10 @@ function updateProductsInCart(product) {
 
 
  // мадалка с деталями товара (картинка)
- const detailsModal = document.querySelector('.modal-details')
+const detailsModal = document.querySelector('.modal-details')
 
 window.addEventListener('click', e => {
     if (e.target.dataset.action === 'preview') {
-
         detailsModal.classList.toggle('hidden')
         const parentNode = e.target.closest('.products__cart')
         const image = parentNode.querySelector('.product-img').getAttribute("src")
@@ -233,7 +214,6 @@ window.addEventListener('click', e => {
         <div class="modal-details__content">
              <img class="modal-details__image" src="${image}" alt="image">
         </div>
-        
         `
     }
 })
