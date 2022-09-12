@@ -26,12 +26,13 @@ function renderProducts(productsArray) {
                     <div class="products__cart-info">
                         <div class="price-wrapper">
                             <span class="price">${price}</span>
-                            <span class="old-price">1000 p</span>
+<!--                            <span class="old-price">1000 p</span>-->
                         </div>
                         <div class="cart-title">${title}</div>
                     </div>
                 </div>  
         `
+
         userCardContainer.insertAdjacentHTML('beforeend', productHTML)
     })
 }

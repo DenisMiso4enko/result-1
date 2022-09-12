@@ -71,33 +71,47 @@ const data = getData()
      itemInCart.textContent = data.length
  }
  checkItemsInCart()
-checkEmptyCart() // не работает
+checkEmptyCart()
 
 
+function updateProductsInCart(product) {
+     for (let i = 0; i < data.length; i++) {
+         if (data[i].id === product.id) {
+             data[i].inCart += 1
+             return
+         }
+     }
+     data.push(product)
+}
  // добавление в корзину
  window.addEventListener('click', (e) => {
      if (e.target.hasAttribute("data-cart")) {
+
          const card = e.target.closest(".products__cart");
          const productInfo = {
              id: card.dataset.id,
-             imgSrc: card.querySelector(".product-img").getAttribute("src"),
+             imgHTML: ` <img src="${card.querySelector(".product-img").getAttribute("src")}" alt="product">`,
              title: card.querySelector(".cart-title").innerText,
              price: card.querySelector(".price").innerText,
              element: card,
+             inCart: 1,
          }
-         data.push(productInfo)
-         checkItemsInCart()
-         const itemInCart = shoppingCartContainer.querySelector(`[data-id="${productInfo.id}"]`);
+         updateProductsInCart(productInfo)
+         render(data)
+         // data.push(productInfo)
 
-         if (itemInCart) {
-             const counterElement = itemInCart.querySelector("[data-counter]");
-             counterElement.innerText = parseInt(counterElement.innerText) + 1
-             calcPrice()
-         } else {
-             render(data)
-         }
+         // const itemInCart = shoppingCartContainer.querySelector(`[data-id="${productInfo.id}"]`);
+
+         // if (itemInCart) {
+         //     const counterElement = itemInCart.querySelector("[data-counter]");
+         //     counterElement.innerText =parseInt(counterElement.innerText)
+         //     calcPrice()
+         // } else {
+         //     render(data)
+         // }
          calcPrice()
          checkEmptyCart()
+         checkItemsInCart()
 
      }
  })
@@ -193,7 +207,6 @@ checkEmptyCart() // не работает
      return data
  }
 
-
  function handleBeforeUnload () {
      localStorage.setItem('product', JSON.stringify(data))
      calcPrice()
@@ -210,9 +223,9 @@ checkEmptyCart() // не работает
  // мадалка с деталями товара (картинка)
  const detailsModal = document.querySelector('.modal-details')
 
-
 window.addEventListener('click', e => {
     if (e.target.dataset.action === 'preview') {
+
         detailsModal.classList.toggle('hidden')
         const parentNode = e.target.closest('.products__cart')
         const image = parentNode.querySelector('.product-img').getAttribute("src")
@@ -227,4 +240,3 @@ window.addEventListener('click', e => {
  detailsModal.addEventListener('click', () => {
      detailsModal.classList.add('hidden')
  })
-
