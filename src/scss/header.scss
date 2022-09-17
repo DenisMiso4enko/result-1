@@ -1,3 +1,6 @@
+@import "vars";
+@import "mixins";
+
 .header__inner {
     background: #fff;
     position: fixed;
@@ -21,16 +24,17 @@
     }
 
     &__input {
+        @include title;
         width: 90%;
         padding: 10px;
         border-radius: 24px;
-        font-size: 18px;
         background: rgba(255,255,255,.2);
         transition: background .3s ease;
         cursor: pointer;
         text-align: center;
         &:focus, &:hover  {
             background: white;
+            color: $black;
         }
         &::placeholder {
             color: #999999;
@@ -40,25 +44,8 @@
 .btn {
 }
 .btn-cart {
-    position: relative;
-    padding: 10px;
-    border-radius: 24px;
-    border: 1px solid red;
-    background: white;
-    &:hover {
-        background: red;
-        color: white;
-    }
-    &:hover .counter {
-        background: black;
-        color: white;
-    }
+   @include btn-cart;
 }
 .counter {
-    position: absolute;
-    top: -5px;
-    right: 0px;
-    padding: 3px 6px;
-    background: red;
-    border-radius: 50%;
+    @include counter;
 }

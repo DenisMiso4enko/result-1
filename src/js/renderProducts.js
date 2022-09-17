@@ -11,26 +11,23 @@ async function getProducts() {
 function renderProducts(productsArray) {
     productsArray.forEach(({ id, title, price, image}) => {
         const productHTML = `
-              <div class="products__cart" data-id="${id}">
-                    <div class="products__cart-img">
+              <div class="products__card" data-id="${id}">
+                    <div class="products__card-img">
                         <img class="product-img" src="${image}" alt="product">
-                        <div class="products__cart-review">
+                        <div class="products__card-review">
                             <button data-action="preview" class="btn-preview">Быстрый просмотр</button>
-                            <div class="products__cart-add">
+                            <div class="products__card-add">
                                 <button data-cart class="btn-add">+</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="products__cart-info">
-                        <div class="price-wrapper">
-                            <p class="price">${price} р</p>
-                        </div>
-                        <div class="cart-title">${title}</div>
+                    <div class="products__card-info">
+                        <p class="price">${Math.round(price)} р</p>
+                        <div class="card-title">${title}</div>
                     </div>
                 </div>  
         `
-
         userCardContainer.insertAdjacentHTML('beforeend', productHTML)
     })
 }

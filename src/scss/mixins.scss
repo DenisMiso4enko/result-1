@@ -1,0 +1,110 @@
+
+@mixin title {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: $gray;
+}
+
+@mixin headers {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 30px;
+  margin-bottom: 40px;
+}
+
+@mixin price {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+@mixin btn-preview {
+  padding: 10px 15px;
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  right: 25%;
+  opacity: 0;
+  transition: opacity .4s;
+}
+
+@mixin btn-cart {
+  position: relative;
+  padding: 10px;
+  background-color: $pink-light;
+  color: $pink;
+  border-radius: 24px;
+  transition: background-color .4s;
+  &:hover {
+    background: $pink;
+    color: $pink-light;
+  }
+  &:hover .counter {
+    background: $pink-light;
+    color: $pink;
+  }
+}
+
+@mixin btn-add {
+  background-color: $pink-light;
+  color: $pink;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  padding: 10px 15px;
+  border-radius: 50%;
+  transition: background-color .4s, color .4s;
+  &:hover {
+    background: $pink;
+    color: $pink-light;
+  }
+}
+
+@mixin counter {
+  position: absolute;
+  top: -5px;
+  right: 0px;
+  padding: 3px 6px;
+  background-color: $pink;
+  color: $pink-light;
+  border-radius: 50%;
+}
+
+@mixin btn-remove {
+  padding: 10px;
+  border-radius: 24px;
+  background-color: $pink-light;
+  color: $pink;
+  transition: background-color .4s, color .4s;
+  &:hover {
+    background-color: #f80000;
+    color: $pink-light;
+  }
+}
+
+@mixin btn-close {
+  padding: 10px 20px;
+  border-radius: 24px;
+  background-color: #f80000;
+  color: $pink-light;
+}
+
+@mixin cart-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+@mixin cart-price {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+@mixin center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

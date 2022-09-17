@@ -49,23 +49,22 @@ function updateProductsInCart(product) {
 }
  // добавление в корзину
  window.addEventListener('click', (e) => {
-     if (e.target.hasAttribute("data-cart")) {
-         const card = e.target.closest(".products__cart");
+     if (e.target.hasAttribute('data-cart')) {
+         const card = e.target.closest('.products__card');
          const productInfo = {
              id: card.dataset.id,
              imgHTML: ` <img src="${card.querySelector(".product-img").getAttribute("src")}" alt="product">`,
-             title: card.querySelector(".cart-title").innerText,
-             price: card.querySelector(".price").innerText,
+             title: card.querySelector('.card-title').innerText,
+             price: card.querySelector('.price').innerText,
              element: card,
              inCart: 1,
          }
-         alert('Ваш товар добавден в корзину')
          updateProductsInCart(productInfo)
          render(data)
          calcPrice()
          checkEmptyCart()
          checkItemsInCart()
-
+         alert('Ваш товар добавден в корзину')
      }
  })
 
@@ -91,7 +90,7 @@ function deleteProductFromArray(id) {
  })
 
 // счетчик товара
-shoppingCart.addEventListener("click", function (e) {
+shoppingCart.addEventListener('click', function (e) {
     if (e.target.dataset.action === 'plus' || e.target.dataset.action === 'minus') {
         for (let i = 0; i < data.length; i++) {
             if (data[i].id === e.target.dataset.id) {
@@ -200,23 +199,3 @@ shoppingCart.addEventListener("click", function (e) {
  }
  window.addEventListener('beforeunload', handleBeforeUnload)
  document.addEventListener('DOMContentLoaded', handlePageLoad)
-
-
- // мадалка с деталями товара (картинка)
-const detailsModal = document.querySelector('.modal-details')
-
-window.addEventListener('click', e => {
-    if (e.target.dataset.action === 'preview') {
-        detailsModal.classList.toggle('hidden')
-        const parentNode = e.target.closest('.products__cart')
-        const image = parentNode.querySelector('.product-img').getAttribute("src")
-        detailsModal.innerHTML = `
-        <div class="modal-details__content">
-             <img class="modal-details__image" src="${image}" alt="image">
-        </div>
-        `
-    }
-})
- detailsModal.addEventListener('click', () => {
-     detailsModal.classList.add('hidden')
- })
