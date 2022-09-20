@@ -30,7 +30,10 @@ function getMoreInfo({ id, title, category, description, image, price, rating: {
                 <span>Рэйтинг: ${rate} из 5</span>
                 <span>В наличии: ${count} штук</span>
             </div>
-            <h3 class="modal-details__price">Цена: ${Math.round(price)} р</h3>
+            <h3 class="modal-details__price">Цена: ${price.toLocaleString('byn', {
+                style: 'currency',
+                currency: 'byn'
+            })}</h3>
             <p class="modal-details__category">Категория: ${category}</p>
             <div class="modal-details__desc">
             <h3 class="modal-details__desc-title">Описание:</h3>

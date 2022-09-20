@@ -146,15 +146,18 @@ shoppingCart.addEventListener('click', function (e) {
      const totalElem = document.querySelector('.total')
      let totalPrice = 0
      if (data.length === 0) {
-         totalElem.textContent = `Итого: 0 р`
+         totalElem.textContent = `Итого: 0 BYN`
      }
 
      cartItems.forEach(item => {
          const amountEl = item.querySelector('[data-counter]').innerText
          const priceEl = item.querySelector('.shopping-cart__price').innerText
-         const currentPrice = parseInt(amountEl) * parseInt(priceEl)
+         const currentPrice = Number(amountEl) * Number(priceEl.replace('BYN', ''))
          totalPrice += currentPrice
-         totalElem.textContent = `Итого: ${totalPrice} р`
+         totalElem.textContent = `Итого: ${totalPrice.toLocaleString('byn', {
+            style: 'currency',
+            currency: 'byn'
+         })}`
      })
  }
 

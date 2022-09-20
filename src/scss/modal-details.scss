@@ -32,6 +32,10 @@
   }
   &__img {
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
     img {
       width: 100%;
     }

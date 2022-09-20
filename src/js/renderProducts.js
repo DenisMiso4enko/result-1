@@ -23,7 +23,10 @@ function renderProducts(productsArray) {
                     </div>
 
                     <div class="products__card-info">
-                        <p class="price">${Math.round(price)} р</p>
+                        <p class="price">${price.toLocaleString('byn', {
+                            style: 'currency',
+                            currency: 'byn'
+                        })}</p>
                         <div class="card-title">${title}</div>
                     </div>
                 </div>  
@@ -31,3 +34,7 @@ function renderProducts(productsArray) {
         userCardContainer.insertAdjacentHTML('beforeend', productHTML)
     })
 }
+
+
+
+//${Math.round(price)}
