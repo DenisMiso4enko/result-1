@@ -12,9 +12,11 @@ window.addEventListener('click', (e) => {
             .catch((err) => console.error(err))
     }
 })
-detailsModal.addEventListener('click', () => {
-    detailsModal.classList.add('hidden')
-    detailsModal.innerHTML = ''
+detailsModal.addEventListener('click', (e) => {
+    if (!e.target.closest('.modal-details__content')) {
+        detailsModal.classList.add('hidden')
+        detailsModal.innerHTML = ''
+    }
 })
 
 

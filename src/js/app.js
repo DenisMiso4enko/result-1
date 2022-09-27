@@ -116,6 +116,20 @@ shoppingCart.addEventListener('click', function (e) {
  // Поиск
  searchInputElement.addEventListener('input', (e) => {
      let searchVal = e.target.value.toLowerCase()
+     let searchProduct = document.querySelectorAll('.card-title')
+     console.log(searchProduct)
+     searchProduct.forEach(product => {
+         if (!product.textContent.toLowerCase().includes(searchVal)) {
+             product.parentElement.parentElement.classList.add('hidden')
+         } else {
+             product.parentElement.parentElement.classList.remove('hidden')
+         }
+     })
+ })
+
+ //
+ searchInputElement.addEventListener('input', (e) => {
+     let searchVal = e.target.value.toLowerCase()
      let searchProduct = document.querySelectorAll('.cart-title')
      searchProduct.forEach(product => {
          if (!product.textContent.toLowerCase().includes(searchVal)) {
@@ -125,6 +139,9 @@ shoppingCart.addEventListener('click', function (e) {
          }
      })
  })
+
+
+ //
 
  //проверка пусткой корзины
  function checkEmptyCart() {
