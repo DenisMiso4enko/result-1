@@ -1,16 +1,16 @@
-const userCardContainer = document.querySelector('.products-wrapper')
+const userCardContainer = document.querySelector(".products-wrapper");
 
-getProducts()
+getProducts();
 
 async function getProducts() {
-    const responce = await fetch('https://fakestoreapi.com/products')
-    const productsArray = await responce.json();
-    renderProducts(productsArray)
+  const responce = await fetch("https://fakestoreapi.com/products");
+  const productsArray = await responce.json();
+  renderProducts(productsArray);
 }
 
 function renderProducts(productsArray) {
-    productsArray.forEach(({ id, title, price, image}) => {
-        const productHTML = `
+  productsArray.forEach(({ id, title, price, image }) => {
+    const productHTML = `
               <div class="products__card" data-id="${id}">
                     <div class="products__card-img">
                         <img class="product-img" src="${image}" alt="product">
@@ -23,18 +23,16 @@ function renderProducts(productsArray) {
                     </div>
 
                     <div class="products__card-info">
-                        <p class="price">${price.toLocaleString('byn', {
-                            style: 'currency',
-                            currency: 'byn'
+                        <p class="price">${price.toLocaleString("byn", {
+                          style: "currency",
+                          currency: "byn",
                         })}</p>
                         <div class="card-title">${title}</div>
                     </div>
                 </div>  
-        `
-        userCardContainer.insertAdjacentHTML('beforeend', productHTML)
-    })
+        `;
+    userCardContainer.insertAdjacentHTML("beforeend", productHTML);
+  });
 }
 
 
-
-//${Math.round(price)}
